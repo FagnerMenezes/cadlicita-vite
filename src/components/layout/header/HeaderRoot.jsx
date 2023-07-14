@@ -2,7 +2,7 @@ import HeaderContent from "./HeaderContent";
 function Header() {
   return (
     <div className="col-span-12">
-      <HeaderContent />
+      <HeaderContent title={"ER COMERCIAL"} />
     </div>
   );
 }

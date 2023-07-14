@@ -25,7 +25,12 @@ function MenuItem() {
             sm:w-20 p-1 hover:bg-blue-100 border-s
             before:content-[''] `}
       >
-        <Link to="/" data-toogle="tooltip" title="Home" className={` `}>
+        <Link
+          to="/dashboard"
+          data-toogle="tooltip"
+          title="Home"
+          className={` `}
+        >
           <FaHome className="text-blue-300" />
         </Link>
       </li>
@@ -39,7 +44,7 @@ function MenuItem() {
         } text-2xl flex justify-center items-center sm:w-20 p-1 `}
       >
         <Link
-          to="/processos"
+          to="/biddings"
           data-toogle="tooltip"
           title="Licitações"
           className="text-pink-400"
@@ -61,7 +66,7 @@ function MenuItem() {
         } text-2xl flex justify-center items-center sm:w-20 p-1 `}
       >
         <Link
-          to="/empenhos"
+          to="/commitment-note"
           data-toogle="tooltip"
           title="Empenhos"
           className=" text-green-600"
@@ -82,7 +87,12 @@ function MenuItem() {
             : "hover:bg-blue-100"
         } text-2xl flex justify-center items-center sm:w-20 p-1 `}
       >
-        <Link to="/orgaos" data-toogle="tooltip" title="Órgãos" className="">
+        <Link
+          to="/government"
+          data-toogle="tooltip"
+          title="Órgãos"
+          className=""
+        >
           <RiGovernmentFill
             className={`${
               active === 4 ? " text-blue-800" : "hover:text-blue-800"
@@ -100,7 +110,7 @@ function MenuItem() {
         } text-2xl flex justify-center items-center sm:w-20 p-1 `}
       >
         <Link
-          to="/calendar"
+          to="/bulletins"
           data-toogle="tooltip"
           title="Boletins"
           className=""
