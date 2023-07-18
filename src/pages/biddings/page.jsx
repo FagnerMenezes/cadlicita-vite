@@ -4,7 +4,7 @@ import { columns } from "./dataTable/Columns";
 import { customStyles } from "./dataTable/CustomStyle";
 import Rows from "./dataTable/Rows";
 import Loading from "../../components/Loading";
-import RowsStyles from "./dataTable/RowStyles";
+import RowsStyles from "./dataTable/StylesRows";
 import HeaderTable from "./dataTable/HeaderTable";
 import { filterItems } from "./dataTable/FilterItems";
 import actions from "./dataTable/actions";
