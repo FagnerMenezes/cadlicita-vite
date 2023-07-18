@@ -1,7 +1,7 @@
 import { FaEdit, FaTrash } from "react-icons/fa";
 import Status from "./Status";
 
-const Rows = (dataGovernment) => {
+const Rows = (dataGovernment, OnClickDelete) => {
   return dataGovernment.map((item) => {
     const {
       bidding_notice,
@@ -9,9 +9,8 @@ const Rows = (dataGovernment) => {
       status: { name: statusName },
     } = item.process_data;
 
-    const [{ _id, name: governmentName }] = item.government.filter((org) =>
-      org.manager.includes("true")
-    );
+    const [{ _id: code_Gvernment, name: governmentName }] =
+      item.government.filter((org) => org.manager.includes("true"));
     return {
       edital: bidding_notice,
       orgao: governmentName,
@@ -23,6 +22,7 @@ const Rows = (dataGovernment) => {
           className="text-red-500 "
           data-te-toggle="tooltip"
           title={"excluir"}
+          onClick={() => OnClickDelete(item._id)}
         />
       ),
       d: (
@@ -33,7 +33,7 @@ const Rows = (dataGovernment) => {
         />
       ),
       s: statusName,
-      id: _id,
+      id: item._id,
     };
   });
 };

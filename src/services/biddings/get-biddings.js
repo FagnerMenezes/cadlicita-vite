@@ -1,6 +1,6 @@
-import api from "./index";
+import api from "@/services/index";
 
-async function getGovernment() {
+async function getBiddingsList() {
   return await api
     .get("processos?", {
       params: {
@@ -16,5 +16,5 @@ async function getGovernment() {
     .catch((error) => error);
 }
 export default {
-  getGovernment,
+  getBiddingsList,
 };

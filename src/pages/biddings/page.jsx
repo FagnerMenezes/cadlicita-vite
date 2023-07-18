@@ -42,6 +42,18 @@ function Biddings() {
     }
   }
 
+  async function deleteBiddings(code) {
+    try {
+      setIsLoading(true);
+      await actions.delete(code);
+      setFilterText(code);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
   return (
     <>
       <HeaderTable
@@ -55,7 +67,7 @@ function Biddings() {
           <DataTable
             pagination={true}
             responsive={true}
-            data={Rows(dataGovernment)}
+            data={Rows(dataGovernment, deleteBiddings)}
             columns={columns}
             customStyles={customStyles}
             conditionalRowStyles={RowsStyles}
