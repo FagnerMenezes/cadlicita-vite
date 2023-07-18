@@ -4,7 +4,7 @@ import { columns } from "./dataTable/Columns";
 import { customStyles } from "./dataTable/CustomStyle";
 import Rows from "./dataTable/Rows";
 import Loading from "../../components/Loading";
-import stylesRows from "./dataTable/conditionalRowStyles";
+//import stylesRows from "./dataTable/ConditionalRowStyles";
 import HeaderTable from "./dataTable/HeaderTable";
 import { filterItems } from "./dataTable/FilterItems";
 import actions from "./dataTable/actions";
@@ -54,7 +54,6 @@ function Biddings() {
             responsive={true}
             data={Rows(dataGovernment)}
             columns={columns}
-            conditionalRowStyles={stylesRows}
             customStyles={customStyles}
             striped={true}
           />
