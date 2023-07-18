@@ -15,6 +15,4 @@ async function getBiddingsList() {
     })
     .catch((error) => error);
 }
-export default {
-  getBiddingsList,
-};
+export default getBiddingsList;
