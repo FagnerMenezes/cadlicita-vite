@@ -12,5 +12,4 @@ const conditionalRowStyles = [
     },
   },
 ];
-
 export default conditionalRowStyles;
