@@ -1,4 +1,4 @@
-const conditionalRowStyles = [
+const RowStyles = [
   {
     when: (row) => row.s === "Cancelado",
     style: {
@@ -12,4 +12,4 @@ const conditionalRowStyles = [
     },
   },
 ];
-export default conditionalRowStyles;
+export default RowStyles;
