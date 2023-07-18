@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { FaFilter, FaSearch } from "react-icons/fa";
-export default function HeaderTable({ title, Onchange, text, OnclickSearch }) {
+export default function HeaderTable({ title, text, OnclickSearch, OnKeyDown }) {
   return (
     <div className="w-full flex flex-wrap items-center p-2 ">
       <h1 className=" w-full text-2xl text-gray-500 font-semibold">{title}</h1>
@@ -10,12 +10,12 @@ export default function HeaderTable({ title, Onchange, text, OnclickSearch }) {
           <input
             type="search"
             className="outline-none h-5"
-            onChange={Onchange}
             value={text}
+            onKeyDown={OnKeyDown}
           />
         </div>
         <button
-          className="group border h-8 hover:bg-blue-700 hover:text-white"
+          className="group border h-8 hover:bg-blue-700 hover:text-white outline-indigo-400"
           title={"Localizar"}
           onClick={OnclickSearch}
         >
@@ -27,7 +27,7 @@ export default function HeaderTable({ title, Onchange, text, OnclickSearch }) {
 }
 HeaderTable.propTypes = {
   title: PropTypes.string,
-  Onchange: PropTypes.func,
   OnclickSearch: PropTypes.func,
   text: PropTypes.string,
+  OnKeyDown: PropTypes.func,
 };

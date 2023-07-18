@@ -28,24 +28,27 @@ function Biddings() {
     })();
   }, [filterText]);
 
-  function filterDataTable(e) {
+  function buttonFilterData(e) {
     e.preventDefault();
     setIsLoading(true);
     setFilterText(inputTextSearch);
   }
 
-  function inputFilterText(e) {
-    e.preventDefault();
+  function inputFilterData(e) {
     setInputTextSearch(e.target.value);
+    if (e.key === "Enter") {
+      setIsLoading(true);
+      setFilterText(inputTextSearch);
+    }
   }
 
   return (
     <>
       <HeaderTable
         title={"Licitações"}
-        OnclickSearch={(e) => filterDataTable(e)}
-        Onchange={(e) => inputFilterText(e)}
+        OnclickSearch={(e) => buttonFilterData(e)}
         value={inputTextSearch}
+        OnKeyDown={(e) => inputFilterData(e)}
       />
       {!isLoading ? (
         <div>
