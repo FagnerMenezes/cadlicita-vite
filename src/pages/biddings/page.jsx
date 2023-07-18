@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
-import { columns } from "./dataTable/Columns";
-import { customStyles } from "./dataTable/CustomStyle";
-import Rows from "./dataTable/Rows";
-import Loading from "../../components/Loading";
-import RowsStyles from "./dataTable/StylesRows";
-import HeaderTable from "./dataTable/HeaderTable";
-import { filterItems } from "./dataTable/FilterItems";
-import actions from "./dataTable/actions";
+import { columns } from "../../components/biddings/dataTable/Columns";
+import { customStyles } from "@/components/biddings/dataTable/CustomStyle";
+import Rows from "@/components/biddings/dataTable/Rows";
+import Loading from "@/components/Loading";
+import RowsStyles from "@/components/biddings/dataTable/StylesRows";
+import HeaderTable from "@/components/biddings/dataTable/HeaderTable";
+import { filterItems } from "@/components/biddings/dataTable/FilterItems";
+import actions from "@/components/biddings/dataTable/actions";
 
 function Biddings() {
   const [dataGovernment, setDataGovernment] = useState([] || null);

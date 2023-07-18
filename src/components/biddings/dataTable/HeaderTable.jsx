@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import { FaFilter, FaSearch } from "react-icons/fa";
+
 export default function HeaderTable({ title, text, OnclickSearch, OnKeyDown }) {
   return (
     <div className="w-full flex flex-wrap items-center p-2 ">
