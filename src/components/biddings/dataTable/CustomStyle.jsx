@@ -1,4 +1,4 @@
-export const customStyles = {
+const customStyles = {
   rows: {
     style: {
       minHeight: "42px", // override the row height
@@ -23,3 +23,4 @@ export const customStyles = {
     },
   },
 };
+export default customStyles;

@@ -1,4 +1,4 @@
-export const filterItems = (dataGovernment, filterText) => {
+const filterItems = (dataGovernment, filterText) => {
   return dataGovernment.filter((item) =>
     [
       item._id,
@@ -10,3 +10,4 @@ export const filterItems = (dataGovernment, filterText) => {
     ].some((prop) => prop.toLowerCase().includes(filterText.toLowerCase()))
   );
 };
+export default filterItems;

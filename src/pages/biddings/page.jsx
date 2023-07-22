@@ -1,13 +1,7 @@
 import { useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
-import { columns } from "../../components/biddings/dataTable/Columns";
-import { customStyles } from "@/components/biddings/dataTable/CustomStyle";
-import Rows from "@/components/biddings/dataTable/Rows";
 import Loading from "@/components/Loading";
-import RowsStyles from "@/components/biddings/dataTable/StylesRows";
-import HeaderTable from "@/components/biddings/dataTable/HeaderTable";
-import { filterItems } from "@/components/biddings/dataTable/FilterItems";
-import actions from "@/components/biddings/dataTable/actions";
+import Table from "../../components/biddings/dataTable/index";
 
 function Biddings() {
   const [dataGovernment, setDataGovernment] = useState([] || null);
@@ -18,7 +12,10 @@ function Biddings() {
   useEffect(() => {
     (async () => {
       try {
-        const Items = filterItems(await actions.fetchData(), filterText);
+        const Items = Table.FilterItems(
+          await Table.Actions.fetchData(),
+          filterText
+        );
         setDataGovernment(Items);
       } catch (error) {
         console.error(error);
@@ -48,7 +45,7 @@ function Biddings() {
   async function deleteBiddings(code) {
     try {
       setIsLoading(true);
-      await actions.delete(code);
+      await Table.Actions.delete(code);
       setFilterText(code);
     } catch (error) {
       console.error(error);
@@ -59,7 +56,7 @@ function Biddings() {
 
   return (
     <>
-      <HeaderTable
+      <Table.Header
         title={"Licitações"}
         OnclickSearch={() => buttonFilterData()}
         value={inputTextSearch}
@@ -70,10 +67,10 @@ function Biddings() {
           <DataTable
             pagination={true}
             responsive={true}
-            data={Rows(dataGovernment, deleteBiddings)}
-            columns={columns}
-            customStyles={customStyles}
-            conditionalRowStyles={RowsStyles}
+            data={Table.Rows(dataGovernment, deleteBiddings)}
+            columns={Table.Columns}
+            customStyles={Table.CustomStyles}
+            conditionalRowStyles={Table.RowsStyles}
             striped={true}
           />
         </div>

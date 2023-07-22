@@ -1,4 +1,4 @@
-export const columns = [
+const columns = [
   {
     name: "Órgão",
     sortable: true,
@@ -28,3 +28,4 @@ export const columns = [
   { name: "#", sortable: true, selector: (row) => row.e, maxWidth: "10px" },
   { name: "#", sortable: true, selector: (row) => row.d, maxWidth: "10px" },
 ];
+export default columns;
