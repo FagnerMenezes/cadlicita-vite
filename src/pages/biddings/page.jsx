@@ -28,8 +28,8 @@ function Biddings() {
     })();
   }, [filterText]);
 
-  function buttonFilterData(e) {
-    e.preventDefault();
+  function buttonFilterData() {
+    //e.preventDefault();
     setIsLoading(true);
     setFilterText(inputTextSearch);
   }
@@ -58,7 +58,7 @@ function Biddings() {
     <>
       <HeaderTable
         title={"Licitações"}
-        OnclickSearch={(e) => buttonFilterData(e)}
+        OnclickSearch={() => buttonFilterData()}
         value={inputTextSearch}
         OnKeyDown={(e) => inputFilterData(e)}
       />
