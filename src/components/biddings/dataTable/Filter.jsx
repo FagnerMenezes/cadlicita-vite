@@ -1,7 +1,7 @@
 import { FaFilter } from "react-icons/fa";
 import PropTypes from "prop-types";
 
-export default function Filter({ text, OnkeyDown, OnclickFilter }) {
+function Filter({ text, OnkeyDown, OnclickFilter }) {
   return (
     <div className="flex w-auto justify-center border border-r-transparent rounded-md rounded-r-none h-8 bg-white p-2 gap-2 hover:border-indigo-400  ">
       <input
@@ -23,3 +23,5 @@ Filter.propTypes = {
   OnkeyDown: PropTypes.func,
   OnclickFilter: PropTypes.func,
 };
+
+export default Filter;

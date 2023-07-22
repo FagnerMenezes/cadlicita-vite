@@ -29,15 +29,12 @@ function Biddings() {
   }, [filterText]);
 
   function buttonFilterData(e) {
-    e.preventDefault();
-
-    setIsLoading(false);
+    //e.preventDefault();
+    setIsLoading(true);
     setFilterText(inputTextSearch);
-    alert(filterText);
   }
 
   function inputFilterData(e) {
-    alert("teste");
     setInputTextSearch(e.target.value);
     if (e.key === "Enter") {
       setIsLoading(true);
