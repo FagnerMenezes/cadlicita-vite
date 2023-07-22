@@ -19,7 +19,7 @@ const Rows = (dataGovernment, OnClickDelete) => {
       status: Status(statusName),
       e: (
         <FaTrash
-          className="text-red-500 "
+          className="text-red-500 cursor-pointer"
           data-te-toggle="tooltip"
           title={"excluir"}
           onClick={() => OnClickDelete(item._id)}

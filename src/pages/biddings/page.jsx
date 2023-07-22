@@ -38,6 +38,7 @@ function Biddings() {
     setInputTextSearch(e.target.value);
     if (e.key === "Enter") {
       setIsLoading(true);
+
       setFilterText(inputTextSearch);
     }
   }
