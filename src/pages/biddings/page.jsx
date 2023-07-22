@@ -28,7 +28,7 @@ function Biddings() {
     })();
   }, [filterText]);
 
-  function buttonFilterData(e) {
+  function buttonFilterData() {
     //e.preventDefault();
     setIsLoading(true);
     setFilterText(inputTextSearch);
@@ -38,6 +38,7 @@ function Biddings() {
     setInputTextSearch(e.target.value);
     if (e.key === "Enter") {
       setIsLoading(true);
+
       setFilterText(inputTextSearch);
     }
   }
