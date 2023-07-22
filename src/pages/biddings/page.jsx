@@ -30,11 +30,14 @@ function Biddings() {
 
   function buttonFilterData(e) {
     e.preventDefault();
-    setIsLoading(true);
+
+    setIsLoading(false);
     setFilterText(inputTextSearch);
+    alert(filterText);
   }
 
   function inputFilterData(e) {
+    alert("teste");
     setInputTextSearch(e.target.value);
     if (e.key === "Enter") {
       setIsLoading(true);
