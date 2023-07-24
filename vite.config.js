@@ -1,5 +1,5 @@
 import react from "@vitejs/plugin-react";
-import * as path from "path";
+import path from "path";
 import { fileURLToPath } from "url";
 import { defineConfig } from "vite";
 const __fileName = fileURLToPath(import.meta.url);
@@ -12,7 +12,9 @@ export default defineConfig({
     // alias: [{ find: "@", replacement: path.resolve(__dirname, "src") }],
     alias: {
       "@": path.resolve(__dirname, "src/"),
-      "@components": "src/components/",
+      "@components": path.resolve(__dirname, "src/components/"),
+      "@page": path.resolve(__dirname, "src/page/"),
+      "@services": path.resolve(__dirname, "src/services/"),
     },
   },
 });

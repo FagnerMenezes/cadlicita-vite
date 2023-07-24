@@ -13,7 +13,9 @@
     "moduleResolution": "NodeNext", // Pretty much always node for modern JS. Other option is "classic"
     "paths": {
        "@/*": ["./src/*"],
-       "@components/*":["./src/components/*"]
+       "@components/*": ["./src/*"],
+      "@page/*": ["./src/*"],
+      "@/services*": ["./src/*"]
         }, // A series of entries which re-map imports to lookup locations relative to the baseUrl
     "jsx": "react-jsx"
     // Source Map

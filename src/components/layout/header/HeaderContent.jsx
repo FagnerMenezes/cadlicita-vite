@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { FaBell } from "react-icons/fa";
-import avatar from "../../../assets/img/meu-avatar.png";
+import avatar from "@/assets/img/meu-avatar.png";
 function HeaderContent({ title }) {
   return (
     <div className="flex justify-around sm:justify-between sm:w-full">
