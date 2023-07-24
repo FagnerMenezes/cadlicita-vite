@@ -1,24 +1,24 @@
 import { useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
-import { columns } from "../../components/biddings/dataTable/Columns";
-import { customStyles } from "@/components/biddings/dataTable/CustomStyle";
-import Rows from "@/components/biddings/dataTable/Rows";
 import Loading from "@/components/Loading";
-import RowsStyles from "@/components/biddings/dataTable/StylesRows";
-import HeaderTable from "@/components/biddings/dataTable/HeaderTable";
-import { filterItems } from "@/components/biddings/dataTable/FilterItems";
-import actions from "@/components/biddings/dataTable/actions";
+import Table from "../../components/biddings/dataTable/index";
+import Modal from "../../components/modal/index";
+import deleteBidding from "./deleteBiddings";
 
 function Biddings() {
   const [dataGovernment, setDataGovernment] = useState([] || null);
   const [isLoading, setIsLoading] = useState(true);
   const [filterText, setFilterText] = useState("");
   const [inputTextSearch, setInputTextSearch] = useState("");
+  const [open, setIsOpen] = useState(false);
 
   useEffect(() => {
     (async () => {
       try {
-        const Items = filterItems(await actions.fetchData(), filterText);
+        const Items = Table.FilterItems(
+          await Table.Actions.fetchData(),
+          filterText
+        );
         setDataGovernment(Items);
       } catch (error) {
         console.error(error);
@@ -28,8 +28,7 @@ function Biddings() {
     })();
   }, [filterText]);
 
-  function buttonFilterData(e) {
-    e.preventDefault();
+  function buttonFilterData() {
     setIsLoading(true);
     setFilterText(inputTextSearch);
   }
@@ -37,28 +36,33 @@ function Biddings() {
   function inputFilterData(e) {
     setInputTextSearch(e.target.value);
     if (e.key === "Enter") {
+      if (e.target.value === "") {
+        setIsLoading(true);
+        setFilterText("");
+      }
       setIsLoading(true);
       setFilterText(inputTextSearch);
     }
   }
 
-  async function deleteBiddings(code) {
+  async function deleteBiddings(code, text) {
     try {
-      setIsLoading(true);
-      await actions.delete(code);
-      setFilterText(code);
+      await deleteBidding(code, text);
+      setFilterText("");
     } catch (error) {
       console.error(error);
-    } finally {
-      setIsLoading(false);
     }
+  }
+
+  function editBiddings() {
+    setIsOpen(true);
   }
 
   return (
     <>
-      <HeaderTable
+      <Table.Header
         title={"Licitações"}
-        OnclickSearch={(e) => buttonFilterData(e)}
+        OnclickSearch={() => buttonFilterData()}
         value={inputTextSearch}
         OnKeyDown={(e) => inputFilterData(e)}
       />
@@ -67,15 +71,29 @@ function Biddings() {
           <DataTable
             pagination={true}
             responsive={true}
-            data={Rows(dataGovernment, deleteBiddings)}
-            columns={columns}
-            customStyles={customStyles}
-            conditionalRowStyles={RowsStyles}
+            data={Table.Rows(dataGovernment, deleteBiddings, editBiddings)}
+            columns={Table.Columns}
+            customStyles={Table.CustomStyles}
+            conditionalRowStyles={Table.RowsStyles}
             striped={true}
           />
         </div>
       ) : (
         <Loading />
+      )}
+      {open && (
+        <Modal.Root>
+          <Modal.Body size="sm">
+            <Modal.Header>
+              <Modal.Icon icons={"warning"} />
+              <Modal.Title title={"Licitações"} />
+            </Modal.Header>
+            <Modal.Content></Modal.Content>
+            <Modal.Footer>
+              <Modal.Cancel onclose={setIsOpen} text={"Cancelar"} />
+            </Modal.Footer>
+          </Modal.Body>
+        </Modal.Root>
       )}
     </>
   );

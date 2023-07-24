@@ -1,7 +1,7 @@
 import { FaEdit, FaTrash } from "react-icons/fa";
 import Status from "./Status";
 
-const Rows = (dataGovernment, OnClickDelete) => {
+const Rows = (dataGovernment, OnClickDelete, OnclickEdit) => {
   return dataGovernment.map((item) => {
     const {
       bidding_notice,
@@ -19,10 +19,10 @@ const Rows = (dataGovernment, OnClickDelete) => {
       status: Status(statusName),
       e: (
         <FaTrash
-          className="text-red-500 "
+          className="text-red-500 cursor-pointer"
           data-te-toggle="tooltip"
           title={"excluir"}
-          onClick={() => OnClickDelete(item._id)}
+          onClick={() => OnClickDelete(item._id, governmentName)}
         />
       ),
       d: (
@@ -30,6 +30,7 @@ const Rows = (dataGovernment, OnClickDelete) => {
           className="text-cyan-600 cursor-pointer"
           title={"editar"}
           data-te-toggle="tooltip"
+          onClick={() => OnclickEdit(item._id)}
         />
       ),
       s: statusName,
