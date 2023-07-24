@@ -1,5 +1,5 @@
-import Table from "../../components/biddings/dataTable/index";
-import { Alert, AlertConfirm, AlertResult } from "../../components/alert/Alert";
+import Table from "@/components/biddings/dataTable/Index";
+import { Alert, AlertConfirm } from "@/components/alert/Alert";
 
 async function deleteBiddings(code, text) {
   try {

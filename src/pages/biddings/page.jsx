@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
-import Loading from "@/components/Loading";
-import Table from "../../components/biddings/dataTable/Index";
-import Modal from "../../components/modal/index";
+import Loading from "@/components/Spinner";
+import Table from "@/components/biddings/dataTable/Index";
+import Modal from "@/components/modal/index";
 import deleteBidding from "./deleteBiddings";
 
 function Biddings() {
