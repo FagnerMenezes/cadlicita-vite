@@ -4,9 +4,9 @@ const ModalTitle = ({ title }) => {
     <>
       <div
         id="modal-title"
-        className="text-base font-semibold leading-6 text-gray-900"
+        className="text-base uppercase font-serif font-bold leading-6 text-slate-100 "
       >
-        <h1>{title}</h1>
+        <h1 className="text-3xl">{title}</h1>
       </div>
     </>
   );

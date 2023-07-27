@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
 import Loading from "@/components/Spinner";
 import Table from "@/components/biddings/dataTable/Index";
-import Modal from "@/components/modal/index";
-import deleteBidding from "./deleteBiddings";
+import Modal from "@/components/modal/Modal";
+import deleteBidding from "./actions/deleteBiddings";
+import Form from "../../components/biddings/form/ContentForm";
 
 function Biddings() {
   const [dataGovernment, setDataGovernment] = useState([] || null);
@@ -54,8 +55,8 @@ function Biddings() {
     }
   }
 
-  function editBiddings() {
-    setIsOpen(true);
+  function handleOpen() {
+    setIsOpen(!open);
   }
 
   return (
@@ -71,7 +72,7 @@ function Biddings() {
           <DataTable
             pagination={true}
             responsive={true}
-            data={Table.Rows(dataGovernment, deleteBiddings, editBiddings)}
+            data={Table.Rows(dataGovernment, deleteBiddings, handleOpen)}
             columns={Table.Columns}
             customStyles={Table.CustomStyles}
             conditionalRowStyles={Table.RowsStyles}
@@ -82,18 +83,14 @@ function Biddings() {
         <Loading />
       )}
       {open && (
-        <Modal.Root>
-          <Modal.Body size="sm">
-            <Modal.Header>
-              <Modal.Icon icons={"warning"} />
-              <Modal.Title title={"Licitações"} />
-            </Modal.Header>
-            <Modal.Content></Modal.Content>
-            <Modal.Footer>
-              <Modal.Cancel onclose={setIsOpen} text={"Cancelar"} />
-            </Modal.Footer>
-          </Modal.Body>
-        </Modal.Root>
+        <Modal
+          open={open}
+          handleOpen={handleOpen}
+          title={"Licitações"}
+          size={"lg"}
+        >
+          <Form></Form>
+        </Modal>
       )}
     </>
   );
