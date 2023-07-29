@@ -7,7 +7,6 @@ import DataTableFilter from "./DataTableFilter";
 import DataTableRowsStyles from "./StylesRows";
 import DataTableCustomStyles from "./CustomStyle";
 import DataTableFilterItem from "./FilterItems";
-import DataTableActions from "./actions";
 
 const DataTable = {
   Header: HeaderTable,
@@ -19,6 +18,5 @@ const DataTable = {
   RowsStyles: DataTableRowsStyles,
   CustomStyles: DataTableCustomStyles,
   FilterItems: DataTableFilterItem,
-  Actions: DataTableActions,
 };
 export default DataTable;

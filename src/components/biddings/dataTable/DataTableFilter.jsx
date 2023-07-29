@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 
 function DataTableFilter({ text, OnkeyDownFilter, OnclickButtonFilter }) {
   return (
-    <div className="flex justify-end items-center w-full g-2">
-      <div className="flex w-full max-w-[350px] justify-center items-center border rounded-md h-12 bg-white p-2 gap-2 hover:border-indigo-400  ">
+    <div className="flex justify-end items-center g-2">
+      <div className="flex min-w-[400px] sm:w-full justify-center items-center border rounded-md h-12 bg-white p-2 gap-2 hover:border-indigo-400  ">
         <input
           type="search"
           className="outline-none h-8 w-full"

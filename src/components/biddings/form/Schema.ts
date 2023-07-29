@@ -12,3 +12,5 @@ export const createDataBindingSchema = z.object({
   modality: z.string().nonempty("Campo portal obrigatório"),
   portal: z.string().nonempty("Campo status obrigatório"),
 });
+
+export type CreateDataBinding = z.infer<typeof createDataBindingSchema>;
