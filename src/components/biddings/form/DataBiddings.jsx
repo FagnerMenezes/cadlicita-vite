@@ -1,8 +1,8 @@
+import { useState, useEffect } from "react";
 import { Tab } from "@headlessui/react";
-import Input from "@components/inputs/InputForm.js";
-import { ErrorMessage } from "./ErrorMessage.js";
-import SelectForm from "@components/select/SelectForm.js";
-import { useFormContext, UseFormRegister, Path } from "react-hook-form";
+import Input from "@components/inputs/InputForm";
+import { ErrorMessage } from "./ErrorMessage";
+import SelectForm from "@components/select/SelectForm";
 import {
   Status,
   TypeDispute,
@@ -11,7 +11,20 @@ import {
 } from "@/services/biddings/selectedData.js";
 
 export default function DataBiddingsPanel() {
-  const { register } = useFormContext();
+  const [status, setStatus] = useState([]);
+  const [modality, setModality] = useState([]);
+  const [typeDispute, setTypeDispute] = useState([]);
+  const [portal, setPortal] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      setStatus(await Status());
+      setModality(await Modality());
+      setPortal(await Portal());
+      setTypeDispute(await TypeDispute());
+    })();
+  }, []);
+
   return (
     <>
       <Tab.Panel className="data-biddings grid-cols-3 lg:grid gap-3 border rounded-md p-4 w-full">
@@ -32,17 +45,17 @@ export default function DataBiddingsPanel() {
           <ErrorMessage field="hours_finish" />
         </div>
         <div className="w-auto">
-          <SelectForm name="status" options={Status} label=" Status" />
+          <SelectForm name="status" options={status} label=" Status" />
           <ErrorMessage field="status" />
           <SelectForm
             name="type_dispute"
-            options={TypeDispute}
+            options={typeDispute}
             label="Tipo disputa"
           />
           <ErrorMessage field="type_dispute" />
-          <SelectForm name="modality" options={Modality} label="Modalidade" />
+          <SelectForm name="modality" options={modality} label="Modalidade" />
           <ErrorMessage field="modality" />
-          <SelectForm name="portal" options={Portal} label="Portal" />
+          <SelectForm name="portal" options={portal} label="Portal" />
           <ErrorMessage field="portal" />
         </div>
         <div className="w-full border rounded-md  h-[350px] p-4">

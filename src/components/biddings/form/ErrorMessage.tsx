@@ -13,9 +13,7 @@ function get(obj: Record<any, any>, path: string) {
         (res, key) => (res !== null && res !== undefined ? res[key] : res),
         obj
       );
-
   const result = travel(/[,[\]]+?/) || travel(/[,[\].]+?/);
-
   return result;
 }
 

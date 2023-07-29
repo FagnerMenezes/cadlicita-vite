@@ -4,10 +4,8 @@ import TabForm from "@components/Tab/Index";
 import FormPanel from "@components/biddings/form/Index";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm, FormProvider, useFieldArray } from "react-hook-form";
-import { createDataBindingSchema } from "./Schema.js";
-
-type CreateDataBinding = z.infer<typeof createDataBindingSchema>;
+import { useForm, FormProvider } from "react-hook-form";
+import { CreateDataBinding, createDataBindingSchema } from "./Schema.js";
 
 export default function ContentForm() {
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -15,7 +13,7 @@ export default function ContentForm() {
     resolver: zodResolver(createDataBindingSchema),
   });
 
-  async function createDataBiddings(data: CreateDataBinding) {
+  async function handleSubmitForm(data: CreateDataBinding) {
     const dataProcess = {
       process_data: data,
     };
@@ -33,7 +31,7 @@ export default function ContentForm() {
   return (
     <div className="container">
       <FormProvider {...createBiddingForm}>
-        <form className=" p-4" onSubmit={handleSubmit(createDataBiddings)}>
+        <form className=" p-4" onSubmit={handleSubmit(handleSubmitForm)}>
           <Tab.Group selectedIndex={selectedIndex} onChange={setSelectedIndex}>
             <TabForm.List categories={TabForm.Category} />
             <Tab.Panels className="flex w-full p-3 ">

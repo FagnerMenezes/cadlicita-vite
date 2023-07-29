@@ -2,22 +2,23 @@ import { useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
 import Loading from "@/components/Spinner";
 import Table from "@/components/biddings/dataTable/Index";
+import { actions } from "./actions/index";
 import Modal from "@/components/modal/Modal";
-import deleteBidding from "./actions/deleteBiddings";
 import Form from "../../components/biddings/form/ContentForm";
 
-function Biddings() {
+function Biddings(initiaData = [], editing = false) {
   const [dataGovernment, setDataGovernment] = useState([] || null);
   const [isLoading, setIsLoading] = useState(true);
   const [filterText, setFilterText] = useState("");
   const [inputTextSearch, setInputTextSearch] = useState("");
   const [open, setIsOpen] = useState(false);
+  const [modalTitle, setModalTitle] = useState("");
 
   useEffect(() => {
     (async () => {
       try {
         const Items = Table.FilterItems(
-          await Table.Actions.fetchData(),
+          await actions.getAllBiddings(),
           filterText
         );
         setDataGovernment(Items);
@@ -48,7 +49,7 @@ function Biddings() {
 
   async function deleteBiddings(code, text) {
     try {
-      await deleteBidding(code, text);
+      await actions.delete(code, text);
       setFilterText("");
     } catch (error) {
       console.error(error);
@@ -57,6 +58,11 @@ function Biddings() {
 
   function handleOpen() {
     setIsOpen(!open);
+    setModalTitle("Editar Licitações");
+  }
+  function addNew() {
+    setIsOpen(!open);
+    setModalTitle("Adicionar nova Licitação");
   }
 
   return (
@@ -66,6 +72,7 @@ function Biddings() {
         OnclickSearch={() => buttonFilterData()}
         value={inputTextSearch}
         OnKeyDown={(e) => inputFilterData(e)}
+        handleClickButton={addNew}
       />
       {!isLoading ? (
         <div>
@@ -86,7 +93,7 @@ function Biddings() {
         <Modal
           open={open}
           handleOpen={handleOpen}
-          title={"Licitações"}
+          title={modalTitle}
           size={"lg"}
         >
           <Form></Form>

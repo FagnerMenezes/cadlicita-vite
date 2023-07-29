@@ -1,16 +1,16 @@
-import Table from "@/components/biddings/dataTable/Index";
+import { services } from "../../../services/biddings/index";
 import { Alert, AlertConfirm } from "@/components/alert/Alert";
 
 async function deleteBiddings(code, text) {
   try {
     (async () => {
       AlertConfirm({
-        title: "Excluir cadastro ? - " + text,
+        title: "Excluir o cadastro ? - " + text,
         text: "Se você confirmar, não poderá reverte.",
       }).then((result) => {
         if (result.isConfirmed) {
           (async () => {
-            await Table.Actions.delete(code);
+            await services.delete(code);
             Alert({ title: "", text: "Cadastro excluido!" });
           })();
         }
